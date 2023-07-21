@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('github.com/clovisnicolas/flutter_contacts');
+  const MethodChannel channel =
+      MethodChannel('github.com/zionlabsco/flutter_contacts');
   final List<MethodCall> log = <MethodCall>[];
   channel.setMockMethodCallHandler((MethodCall methodCall) async {
     log.add(methodCall);
@@ -56,10 +57,10 @@ void main() {
     ));
     expectMethodCall(log, 'deleteContact');
   });
-  
+
   test('should provide initials for contact', () {
-    Contact contact1 = Contact(
-        givenName: "givenName", familyName: "familyName");
+    Contact contact1 =
+        Contact(givenName: "givenName", familyName: "familyName");
     Contact contact2 = Contact(givenName: "givenName");
     Contact contact3 = Contact(familyName: "familyName");
     Contact contact4 = Contact();
@@ -79,7 +80,6 @@ void main() {
     ));
     expectMethodCall(log, 'updateContact');
   });
-
 
   test('should show contacts are equal', () {
     Contact contact1 =
@@ -135,7 +135,7 @@ void main() {
     expect(contact1 + contact2, mergedContact);
   });
 
-  test('should provide a valid merged contact, with no extra info', (){
+  test('should provide a valid merged contact, with no extra info', () {
     Contact contact1 = Contact(familyName: "familyName");
     Contact contact2 = Contact();
     expect(contact1 + contact2, contact1);
